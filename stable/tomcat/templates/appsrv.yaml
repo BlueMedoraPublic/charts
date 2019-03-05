@@ -22,6 +22,10 @@ spec:
       volumes:
         - name: app-volume
           emptyDir: {}
+        - name: logs
+          hostPath:
+            path: /var/log/tomcat
+            type: Directory
       initContainers:
         - name: war
           image: {{ .Values.image.webarchive.repository }}:{{ .Values.image.webarchive.tag }}
@@ -33,6 +37,8 @@ spec:
           volumeMounts:
             - name: app-volume
               mountPath: /app
+            - name: logs
+              mountPath: /usr/local/tomcat/logs
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.tomcat.repository }}:{{ .Values.image.tomcat.tag }}
@@ -40,6 +46,8 @@ spec:
           volumeMounts:
             - name: app-volume
               mountPath: {{ .Values.deploy.directory }}
+            - name: logs
+              mountPath: /usr/local/tomcat/logs
           ports:
             - containerPort: {{ .Values.service.internalPort }}
               hostPort: 8009

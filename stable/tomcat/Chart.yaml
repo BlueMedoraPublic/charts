@@ -4,7 +4,7 @@ description: Deploy a basic tomcat application server with sidecar as web archiv
 icon: http://tomcat.apache.org/res/images/tomcat.png
 version: 0.2.0
 appVersion: 7.0
-home: https://github.com/yahavb
+home: https://github.com/bluemedora
 maintainers:
-  - name: yahavb
-    email: ybiran@ananware.systems
+  - name: joe sirianni
+    email: jsirianni@bluemedora.com
